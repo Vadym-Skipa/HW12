@@ -80,6 +80,7 @@ with open(args.path_to_source_files, "r") as file:
 
 with open(args.destination_path + args.destination_filename, "w") as file:
     writer = csv.DictWriter(file, fieldnames=head)
+    writer.writeheader()
     writer.writerows(output)
 
 
