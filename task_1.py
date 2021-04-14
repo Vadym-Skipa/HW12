@@ -52,22 +52,10 @@ with open(args.path_to_source_files, "r") as file:
     head = reader.fieldnames
     output = []
     for el in reader:
-        if args.exp == "min(exp)":
-            if output != []:
-                if el["exp"] > output[-1]["exp"]:
-                    continue
-                elif el["exp"] < output[-1]["exp"]:
-                    output = []
-        else:
+        if args.exp != "min(exp)":
             if el["exp"] != args.exp:
                 continue
-        if args.current_job_exp == "max(current_job_exp)":
-            if output != []:
-                if el["current_job_exp"] < output[-1]["current_job_exp"]:
-                    continue
-                elif el["current_job_exp"] > output[-1]["current_job_exp"]:
-                    output = []
-        else:
+        if args.current_job_exp != "max(current_job_exp)":
             if el["current_job_exp"] != args.current_job_exp:
                 continue
         check = True
